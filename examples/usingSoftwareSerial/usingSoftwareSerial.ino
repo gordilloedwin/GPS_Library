@@ -1,7 +1,7 @@
 #include <GPS.h>
 #include <SoftwareSerial.h>
 
-GPS gps(0); // initialize gps object, 0 argument means no serial manager...
+GPS gps(0); // initialize gps object, 0 argument means you will feed this instance yourself...
 
 /*Not all pins on the Leonardo support change interrupts, 
  so only the following can be used for RX: 

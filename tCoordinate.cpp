@@ -59,7 +59,7 @@ float TCoordinate::getDecimalFormat() {
 String TCoordinate::getSphericalFormat1()
 {
 	String ret = (String)degree;
-	ret += "º ";
+	ret += "* ";
 	ret += (String)holder;
 	ret += "' " + axis;
 	return ret;
@@ -68,7 +68,7 @@ String TCoordinate::getSphericalFormat1()
 String TCoordinate::getSphericalFormat2()
 {
 	String ret = (String)degree;
-	ret += "º";
+	ret += "*";
 	ret += (String)minutes;
 	ret += "'";
 	ret += (String)seconds;

@@ -9,10 +9,12 @@
 #include "WProgram.h"
 #endif
 
+#include <inttypes.h>
 #include "tCoordinate.h"
 #include "tDatetime.h"
 
 #pragma once
+
 
 class GPS
 {
@@ -34,11 +36,12 @@ class GPS
 	int signalQuality;
 	int satellitesTracked;
 	boolean trustAltitude;
-	void decodeDataGprmc(String gprmc);
-	void decodeDataGpgga(String gpgga);
+	void decodeDataGprmc(String data);
+	void decodeDataGpgga(String data);
 	boolean checkCRC(String toCheck);	
 
 	public:
+	GPS() : serialNumber(-1), baudRate(9600) {};
 	GPS(int Baud) : baudRate(Baud), serialNumber(0) {};
 	void init();
 	void init(boolean isLeonardo);
@@ -75,7 +78,7 @@ class GPS
 	float getSpeedKph();
 	float getCurrentHeading();
 	String getMagneticVariation();
-};
+	};
 
 //extern GPS GPSbody;
 

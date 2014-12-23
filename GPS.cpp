@@ -29,8 +29,6 @@ void GPS::init()
 
 void GPS::init(boolean isLeonardo)
 {
-	baudRate == 0 ? serialNumber = -1 : serialNumber = 0;
-
 	dataReady[0] = false;
 	dataReady[1] = false;
 	NMEAstring = "";
@@ -163,8 +161,8 @@ void GPS::decodeDataGpgga(String gpgga)
 				temp=="" ? trustAltitude=false : trustAltitude=true;
 				break;
 				
-				default: //dump temporary content...
-				;
+				default://dump temporary content...	
+				temp = "";		
 			}//end switch 
 			temp = "";
 			divider++;
@@ -236,8 +234,8 @@ void GPS::decodeDataGprmc(String gprmc)
 				MagVariation = temp;				
 				break;
 				
-				default: //dump temp content
-				;
+				default://dump temp content
+				temp = "";
 			}//end switch
 			divider++;
 			temp = "";
@@ -364,7 +362,7 @@ float GPS::getSpeedKph() {
 }
 
 float GPS::getSpeedMph() {
-	return (speed *= 1.1507);
+	return speed *= 1.1507;
 }
 
 float GPS::getCurrentHeading() {
@@ -396,8 +394,6 @@ boolean GPS::checkCRC(String toCheck)
 	{
 		checksum ^= *datapointer;
 		datapointer++;
-		if (*datapointer == NULL)
-			break;
 	}
 	
 	/* Parse out the checksum in ASCII hex nybbles */
